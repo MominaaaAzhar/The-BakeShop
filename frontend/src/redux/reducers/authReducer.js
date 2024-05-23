@@ -6,6 +6,8 @@ import {
   LOGOUT,
   AUTH_ERROR,
   USER_LOADED,
+  UPDATE_PROFILE,
+  GET_USER,
 } from '../actions/types';
 
 const initialState = {
@@ -38,6 +40,14 @@ export default function authReducer(state = initialState, action) {
     case REGISTER_FAIL:
     case LOGIN_FAIL:
     case LOGOUT:
+        localStorage.removeItem('token');
+        return {
+          ...state,
+          token: null,
+          isAuthenticated: false,
+          loading: false,
+          user: null,
+        };
     case AUTH_ERROR:
       localStorage.removeItem('token');
       return {
@@ -47,6 +57,18 @@ export default function authReducer(state = initialState, action) {
         loading: false,
         user: null,
       };
+    case UPDATE_PROFILE:
+      return {
+        ...state,
+        user: payload,
+        loading: false,
+      };
+      case GET_USER:
+        return {
+          ...state,
+          user: payload,
+          loading: false,
+        };
     default:
       return state;
   }

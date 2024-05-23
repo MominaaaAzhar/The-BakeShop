@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+.desktop-menu {
+  display: none;
+}
+
+.mobile-menu {
+  display: block;
+}
+
+@media (min-width: 600px) {
+  .desktop-menu {
+    display: block;
+  }
+
+  .mobile-menu {
+    display: none;
+  }
+}

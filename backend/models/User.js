@@ -4,7 +4,14 @@ const UserSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
-    unique: true,
+  },
+  firstName: {
+    type: String,
+    required: true
+  },
+  lastName: {
+    type: String,
+    required: true
   },
   email: {
     type: String,
@@ -15,6 +22,18 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-}, { timestamps: true });
+  avatarBgColor: {
+    type: String,
+    default: '#000000',
+  },
+  avatarTextColor: {
+    type: String,
+    default: '#ffffff',
+  },
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
+});
 
 module.exports = mongoose.model('User', UserSchema);
